@@ -1,0 +1,61 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:BlackList.Ui.Wpf.Common.Controls">
+
+    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+
+    <Style TargetType="{x:Type controls:StringDataControl}">
+        <Setter Property="Margin" Value="{DynamicResource IconMargin}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:StringDataControl}">
+                    <Border>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    Name="PART_TextBlockCaption"
+                                    Margin="{DynamicResource DataControlCaptionMargin}"
+                                    FontSize="20"
+                                    Foreground="{DynamicResource TabItemColorBrush}" />
+                                <TextBlock
+                                    FontSize="18"
+                                    Foreground="{DynamicResource ErrorColorBrush}"
+                                    Text="*"
+                                    Visibility="{TemplateBinding IsRequired,
+                                                                 Converter={StaticResource BooleanToVisibilityConverter}}" />
+                            </StackPanel>
+                            <TextBox
+                                Name="PART_TextBoxValue"
+                                Grid.Row="1"
+                                IsReadOnly="{Binding Path=IsReadOnly, RelativeSource={RelativeSource TemplatedParent}}"
+                                KeyboardNavigation.TabIndex="0" />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Validation.ErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <Border
+                            BorderBrush="{DynamicResource DarkErrorColorBrush}"
+                            BorderThickness="3"
+                            CornerRadius="{DynamicResource CornerRadius}">
+                            <AdornedElementPlaceholder Name="AdornerPlaceholder" />
+                        </Border>
+                        <Label Content="{Binding ElementName=AdornerPlaceholder, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}" Foreground="{DynamicResource ErrorColorBrush}" />
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+</ResourceDictionary>

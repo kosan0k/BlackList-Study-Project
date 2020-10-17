@@ -9,7 +9,7 @@ using System.Windows;
 namespace BlackList.Ui.Wpf.Host
 {
     /// <summary>
-    /// Interaction logic for App.xaml
+    /// Логика взаимодействия для App.xaml
     /// </summary>
     public partial class App : Application
     {

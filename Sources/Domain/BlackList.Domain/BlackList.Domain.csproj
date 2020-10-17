@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{06E3D476-E420-47F5-AEAB-91B573FBCE35}</ProjectGuid>
+    <ProjectGuid>{8655488E-5197-4E54-833B-48F13A1C37E6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BlackList.Ui.Wpf.Common</RootNamespace>
-    <AssemblyName>BlackList.Ui.Wpf.Common</AssemblyName>
+    <RootNamespace>BlackList.Domain</RootNamespace>
+    <AssemblyName>BlackList.Domain</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,11 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,20 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\BaseDataControl.cs" />
-    <Compile Include="Controls\StringDataControl.cs" />
+    <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\FullName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="WindowsBase">
-      <Version>4.6.1055</Version>
-    </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="Themes\StringDataControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
