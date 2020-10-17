@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29509.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{F826EFBF-494D-40A2-AD36-8E1E337BDBAC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{A30C5CC9-6417-4FF5-80A2-C04182169006}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wpf", "Wpf", "{6FD210FD-DBC2-4A23-A5E6-D54AAC0EFA71}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlackList.Ui.Wpf.Host", "Sources\Ui\Wpf\BlackList.Ui.Wpf.Host\BlackList.Ui.Wpf.Host.csproj", "{E9088BD9-911E-43CD-8CEA-FB4270BA99AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackList.Ui.Wpf.Common", "Sources\Ui\Wpf\BlackList.Ui.Wpf.Common\BlackList.Ui.Wpf.Common.csproj", "{D4C4C295-FD1C-48BC-9A39-2F34BA1B73F1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E9088BD9-911E-43CD-8CEA-FB4270BA99AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9088BD9-911E-43CD-8CEA-FB4270BA99AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9088BD9-911E-43CD-8CEA-FB4270BA99AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9088BD9-911E-43CD-8CEA-FB4270BA99AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4C4C295-FD1C-48BC-9A39-2F34BA1B73F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4C4C295-FD1C-48BC-9A39-2F34BA1B73F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4C4C295-FD1C-48BC-9A39-2F34BA1B73F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4C4C295-FD1C-48BC-9A39-2F34BA1B73F1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6FD210FD-DBC2-4A23-A5E6-D54AAC0EFA71} = {F826EFBF-494D-40A2-AD36-8E1E337BDBAC}
+		{E9088BD9-911E-43CD-8CEA-FB4270BA99AE} = {6FD210FD-DBC2-4A23-A5E6-D54AAC0EFA71}
+		{D4C4C295-FD1C-48BC-9A39-2F34BA1B73F1} = {6FD210FD-DBC2-4A23-A5E6-D54AAC0EFA71}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E385D8FE-6100-4382-B0E7-600B32A7C1DC}
+	EndGlobalSection
+EndGlobal
