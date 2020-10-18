@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,6 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\MainViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -99,6 +101,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Storage\BlackList.Storage.Sql\BlackList.Storage.Sql.csproj">
+      <Project>{0e0f7f4b-a0c1-41c1-af3d-ea49992b621c}</Project>
+      <Name>BlackList.Storage.Sql</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Storage\BlackList.Storage\BlackList.Storage.csproj">
+      <Project>{0E24182F-67F9-414C-8EF0-31F6ADA8C0F6}</Project>
+      <Name>BlackList.Storage</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BlackList.Ui.Wpf.Common\BlackList.Ui.Wpf.Common.csproj">
       <Project>{06e3d476-e420-47f5-aeab-91b573fbce35}</Project>
       <Name>BlackList.Ui.Wpf.Common</Name>

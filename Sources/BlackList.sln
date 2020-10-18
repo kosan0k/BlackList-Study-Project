@@ -1,4 +1,3 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29509.3
@@ -19,7 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Storage", "Storage", "{FA58
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlackList.Storage", "Storage\BlackList.Storage\BlackList.Storage.csproj", "{0E24182F-67F9-414C-8EF0-31F6ADA8C0F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackList.Storage.Sql", "Storage\BlackList.Storage.Sql\BlackList.Storage.Sql.csproj", "{A7AE3FFD-EAB2-4640-A139-228145171992}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackList.Storage.Sql", "Storage\BlackList.Storage.Sql\BlackList.Storage.Sql.csproj", "{0E0F7F4B-A0C1-41C1-AF3D-EA49992B621C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,10 +42,10 @@ Global
 		{0E24182F-67F9-414C-8EF0-31F6ADA8C0F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E24182F-67F9-414C-8EF0-31F6ADA8C0F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E24182F-67F9-414C-8EF0-31F6ADA8C0F6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A7AE3FFD-EAB2-4640-A139-228145171992}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A7AE3FFD-EAB2-4640-A139-228145171992}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A7AE3FFD-EAB2-4640-A139-228145171992}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A7AE3FFD-EAB2-4640-A139-228145171992}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E0F7F4B-A0C1-41C1-AF3D-EA49992B621C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E0F7F4B-A0C1-41C1-AF3D-EA49992B621C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E0F7F4B-A0C1-41C1-AF3D-EA49992B621C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E0F7F4B-A0C1-41C1-AF3D-EA49992B621C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,7 +56,7 @@ Global
 		{06E3D476-E420-47F5-AEAB-91B573FBCE35} = {6FD210FD-DBC2-4A23-A5E6-D54AAC0EFA71}
 		{8655488E-5197-4E54-833B-48F13A1C37E6} = {A30C5CC9-6417-4FF5-80A2-C04182169006}
 		{0E24182F-67F9-414C-8EF0-31F6ADA8C0F6} = {FA58656E-9154-44B3-9FC2-CBD07F2DDDD8}
-		{A7AE3FFD-EAB2-4640-A139-228145171992} = {FA58656E-9154-44B3-9FC2-CBD07F2DDDD8}
+		{0E0F7F4B-A0C1-41C1-AF3D-EA49992B621C} = {FA58656E-9154-44B3-9FC2-CBD07F2DDDD8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E385D8FE-6100-4382-B0E7-600B32A7C1DC}
