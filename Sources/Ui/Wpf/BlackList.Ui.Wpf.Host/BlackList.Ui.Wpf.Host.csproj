@@ -56,7 +56,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="Views\PersonInfo.xaml.cs">
+      <DependentUpon>PersonInfo.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -70,6 +74,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PersonInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -101,6 +109,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Domain\BlackList.Domain\BlackList.Domain.csproj">
+      <Project>{8655488E-5197-4E54-833B-48F13A1C37E6}</Project>
+      <Name>BlackList.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Storage\BlackList.Storage.Sql\BlackList.Storage.Sql.csproj">
       <Project>{0e0f7f4b-a0c1-41c1-af3d-ea49992b621c}</Project>
       <Name>BlackList.Storage.Sql</Name>
@@ -113,6 +125,17 @@
       <Project>{06e3d476-e420-47f5-aeab-91b573fbce35}</Project>
       <Name>BlackList.Ui.Wpf.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="EntityFramework">
+      <Version>6.4.4</Version>
+    </PackageReference>
+    <PackageReference Include="EntityFramework6.Npgsql">
+      <Version>6.4.1</Version>
+    </PackageReference>
+    <PackageReference Include="Npgsql">
+      <Version>4.1.5</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

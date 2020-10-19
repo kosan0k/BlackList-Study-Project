@@ -16,7 +16,7 @@ namespace BlackList.Storage.Sql
         private RepositoryContext _repositoryContext;
 
         public SqlStorage(string connectionString)
-        {
+        {            
             CreateContext(connectionString);
         }
 

@@ -3,6 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:BlackList.Ui.Wpf.Host">
     <Application.Resources>
-         
+        <ResourceDictionary Source="/Themes/Generic.xaml"/>
     </Application.Resources>
 </Application>

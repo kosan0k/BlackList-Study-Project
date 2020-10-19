@@ -8,7 +8,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
-        <ResourceDictionary Source="/Themes/Generic.xaml"/>
+        <ResourceDictionary>
+            <Style x:Key="HeaderLabelStyle" TargetType="{x:Type Label}">
+                <Setter Property="FontSize" Value="26"/>
+            </Style>
+        </ResourceDictionary>
     </Window.Resources>
     <Grid Background="#697995">
         <Grid.ColumnDefinitions>
@@ -35,10 +39,14 @@
                 <controls:StringDataControl VerticalAlignment="Center"
                                             Caption="Search"
                                             FontSize="18"/>
-                <Label Grid.Column="1"
-                       HorizontalAlignment="Center"
-                       Content="Lol kek cheburek"
-                       FontSize="24"/>
+                <StackPanel Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Orientation="Horizontal">
+                    <Label Content="{Binding SelectedPerson.FullName.FirstName}" Style="{StaticResource HeaderLabelStyle}"/>
+                    <Label Content="{Binding SelectedPerson.FullName.SecondName}" Style="{StaticResource HeaderLabelStyle}"/>
+                    <Label Content="{Binding SelectedPerson.FullName.Surname}" Style="{StaticResource HeaderLabelStyle}"/>
+                </StackPanel>
             </Grid>
         </Border>
 
@@ -48,20 +56,27 @@
                     BorderThickness="5"
                     CornerRadius="10">
                 <Grid>
-                    <ListBox>
-                        <ListBoxItem>
-                            <TextBlock Text="sdfsdfsdfsdf"/>
-                        </ListBoxItem>
-                        <ListBoxItem>
-                            <TextBlock Text="sdfsdfsdfsdf"/>
-                        </ListBoxItem>
-                        <ListBoxItem>
-                            <TextBlock Text="sdfsdfsdfsdf"/>
-                        </ListBoxItem>
-                        <ListBoxItem>
-                            <TextBlock Text="sdfsdfsdfsdf"/>
-                        </ListBoxItem>
-                    </ListBox>
+                    <DataGrid AutoGenerateColumns="False" SelectedItem="{Binding SelectedPerson}"
+                              ItemsSource="{Binding Persons}"
+                              IsReadOnly="True"
+                              FontSize="16">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Header="Name" Width="*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding FullName.FirstName}"/>
+                                            <TextBlock Text="{Binding FullName.SecondName}"/>
+                                            <TextBlock Text="{Binding FullName.Surname}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Width="*" Header="Date of birth" Binding="{Binding DateOfBirth, StringFormat=dd.MM.yyyy}"/>
+                            <DataGridTextColumn Width="*" Header="Position" Binding="{Binding Position}"/>
+                            <DataGridTextColumn Width="*" Header="Notes" Binding="{Binding Notes}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </Grid>
             </Border>
         </Grid>
