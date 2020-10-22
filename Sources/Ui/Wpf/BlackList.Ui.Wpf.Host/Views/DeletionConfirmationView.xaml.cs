@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace BlackList.Ui.Wpf.Host.Views
 {
     /// <summary>
-    /// Логика взаимодействия для PersonInfo.xaml
+    /// Логика взаимодействия для DeletionConfirmationView.xaml
     /// </summary>
-    public partial class PersonInfo : Window
+    public partial class DeletionConfirmationView : Window
     {
-        public PersonInfo()
+        public DeletionConfirmationView()
         {
             InitializeComponent();
         }

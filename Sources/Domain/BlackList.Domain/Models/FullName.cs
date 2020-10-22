@@ -7,5 +7,7 @@
         public string SecondName { get; set; }
 
         public string Surname { get; set; }
+
+        public string FullNameConcatenation => $"{FirstName} {SecondName} {Surname}";
     }
 }

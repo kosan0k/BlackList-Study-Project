@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionCommand.cs" />
     <Compile Include="Controls\BaseDataControl.cs" />
     <Compile Include="Controls\StringDataControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

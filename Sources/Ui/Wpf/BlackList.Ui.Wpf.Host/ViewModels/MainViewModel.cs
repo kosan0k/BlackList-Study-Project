@@ -1,9 +1,13 @@
-﻿using BlackList.Domain.Models;
+﻿using AsyncAwaitBestPractices.MVVM;
+using BlackList.Domain.Models;
 using BlackList.Storage;
 using BlackList.Storage.Sql;
-using System.Collections.Generic;
+using BlackList.Ui.Wpf.Common;
+using BlackList.Ui.Wpf.Host.Views;
+using System;
 using System.Collections.ObjectModel;
 using System.Configuration;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace BlackList.Ui.Wpf.Host.ViewModels
@@ -13,11 +17,10 @@ namespace BlackList.Ui.Wpf.Host.ViewModels
         private static IStorage _storage;
 
         private Person _selectedPerson;
-
-        public Person SelectedPerson 
+        public Person SelectedPerson
         {
             get => _selectedPerson;
-            set 
+            set
             {
                 _selectedPerson = value;
                 OnPropertyChanged(nameof(SelectedPerson));
@@ -26,7 +29,7 @@ namespace BlackList.Ui.Wpf.Host.ViewModels
 
         public ObservableCollection<Person> Persons { get; set; }
 
-        public MainViewModel() 
+        public MainViewModel()
         {
             var dbConnectionString = ConfigurationManager.ConnectionStrings["BlackListDatabase"].ConnectionString;
             _storage = new SqlStorage(dbConnectionString);
@@ -35,8 +38,60 @@ namespace BlackList.Ui.Wpf.Host.ViewModels
             Persons = new ObservableCollection<Person>(persons);
         }
 
-        public ICommand AddPersonCommand { get; set; }
-        public ICommand EditPersonCommand { get; set; }
-        public ICommand DeletePersonCommand { get; set; }        
+        public ICommand AddPersonCommand => new ActionCommand(ShowPersonInfoWindow);
+        public ICommand EditPersonCommand => new ActionCommand(ShowPersonInfoWindow, CanExecute);
+        public ICommand DeletePersonCommand => new ActionCommand(ShowDeleteConfirmationView, CanExecute);
+
+        private void ShowPersonInfoWindow(object parameter)
+        {
+            var personParameter = parameter as Person;
+
+            Action<Person> confirmAction = null;
+            if (personParameter != null)
+            {
+                confirmAction = (person) =>
+                {
+                    Persons.Remove(SelectedPerson);
+                    Persons.Add(person);
+                    OnPropertyChanged(nameof(Persons));
+                };
+            }
+            else 
+            {
+                confirmAction = (person) => Persons.Add(person);                
+            }                
+            var userInfoView = new PersonInfoView()
+            {                
+                DataContext = new PersonInfoViewModel(_storage, ref personParameter, confirmAction)
+            };
+
+            userInfoView.Show();
+        }
+
+        private bool CanExecute(object parameter)
+        {
+            return SelectedPerson != null;
+        }
+
+        private void ShowDeleteConfirmationView(object parameter) 
+        {
+            var confirmationView = new DeletionConfirmationView()
+            {
+                DataContext = new ConfirmationViewModel()
+                {
+                    ConfirmCommand = new AsyncCommand(DeleteSelectedPersonAsync)
+                }
+            };
+            confirmationView.Show();
+        }
+
+        private async Task DeleteSelectedPersonAsync() 
+        {
+            var deletionSucceed = await _storage.TryDeletePersonAsync(_selectedPerson);
+            if (deletionSucceed)
+            {
+                Persons.Remove(_selectedPerson);
+            }
+        }
     }
 }

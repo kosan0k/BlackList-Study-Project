@@ -1,4 +1,6 @@
 ﻿using BlackList.Domain.Models;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BlackList.Storage.Sql.Entities
 {
@@ -14,6 +16,8 @@ namespace BlackList.Storage.Sql.Entities
             FullName = person.FullName;
         }
 
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
     }
 }

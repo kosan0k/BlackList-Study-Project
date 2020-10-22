@@ -6,11 +6,17 @@
         xmlns:controls="clr-namespace:BlackList.Ui.Wpf.Common.Controls;assembly=BlackList.Ui.Wpf.Common"
         xmlns:local="clr-namespace:BlackList.Ui.Wpf.Host"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="800" Width="1200">
     <Window.Resources>
         <ResourceDictionary>
             <Style x:Key="HeaderLabelStyle" TargetType="{x:Type Label}">
                 <Setter Property="FontSize" Value="26"/>
+            </Style>
+
+            <Style TargetType="{x:Type Button}">
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="Width" Value="100"/>
+                <Setter Property="Height" Value="50"/>
             </Style>
         </ResourceDictionary>
     </Window.Resources>
@@ -61,7 +67,7 @@
                               IsReadOnly="True"
                               FontSize="16">
                         <DataGrid.Columns>
-                            <DataGridTemplateColumn Header="Name" Width="*">
+                            <!--<DataGridTemplateColumn Header="Name" Width="*">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel>
@@ -71,7 +77,8 @@
                                         </StackPanel>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
+                            </DataGridTemplateColumn>-->
+                            <DataGridTextColumn Width="*" Header="Name" Binding="{Binding FullName.FullNameConcatenation}"/>
                             <DataGridTextColumn Width="*" Header="Date of birth" Binding="{Binding DateOfBirth, StringFormat=dd.MM.yyyy}"/>
                             <DataGridTextColumn Width="*" Header="Position" Binding="{Binding Position}"/>
                             <DataGridTextColumn Width="*" Header="Notes" Binding="{Binding Notes}"/>
@@ -80,5 +87,19 @@
                 </Grid>
             </Border>
         </Grid>
+
+        <StackPanel Grid.Column="2"
+                    Grid.Row="2">
+            <Button Content="Edit" Command="{Binding EditPersonCommand}"
+                    CommandParameter="{Binding SelectedPerson}"/>
+            <Button Content="Delete" Command="{Binding DeletePersonCommand}"
+                    CommandParameter="{Binding SelectedPerson}"/>
+        </StackPanel>
+
+        <Button Grid.Column="1"
+                Grid.Row="3"
+                Content="Add"
+                Command="{Binding AddPersonCommand}"
+                CommandParameter="{Binding {x:Null}}"/>
     </Grid>
 </Window>

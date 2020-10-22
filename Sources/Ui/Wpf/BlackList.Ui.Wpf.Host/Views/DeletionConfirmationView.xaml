@@ -1,0 +1,50 @@
+﻿<Window x:Class="BlackList.Ui.Wpf.Host.Views.DeletionConfirmationView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BlackList.Ui.Wpf.Host.Views"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        mc:Ignorable="d"
+        Title="DeletionConfirmationView" Height="200" Width="400">
+    <Window.Resources>
+        <ResourceDictionary>  
+            <Style TargetType="{x:Type Button}">
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="Width" Value="100"/>
+                <Setter Property="Height" Value="50"/>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Confirm deletion?" VerticalAlignment="Center"
+               HorizontalAlignment="Center"/>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center"
+                    Orientation="Horizontal">
+            <Button Content="Ok" Command="{Binding ConfirmCommand}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:CallMethodAction MethodName="Close"
+                           TargetObject="{Binding RelativeSource={RelativeSource
+                                                  Mode=FindAncestor,
+                                                  AncestorType=Window}}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Content="Cancel" Command="{Binding CancelCommand}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:CallMethodAction MethodName="Close"
+                           TargetObject="{Binding RelativeSource={RelativeSource
+                                                  Mode=FindAncestor,
+                                                  AncestorType=Window}}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>

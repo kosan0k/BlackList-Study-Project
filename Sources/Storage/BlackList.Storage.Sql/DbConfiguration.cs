@@ -6,7 +6,7 @@ namespace BlackList.Storage.Sql
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = true;            
             ContextKey = "Project.Infrastructure.MyDbContext";
         }
     }

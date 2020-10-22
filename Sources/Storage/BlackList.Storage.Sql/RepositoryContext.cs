@@ -17,7 +17,9 @@ namespace BlackList.Storage.Sql
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<PersonEntity>()
+                        .Property(p => p.Id)
+                        .HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
         }
     }
 }
