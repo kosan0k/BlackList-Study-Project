@@ -4,6 +4,7 @@ using BlackList.Storage;
 using BlackList.Storage.Sql;
 using BlackList.Ui.Wpf.Common;
 using BlackList.Ui.Wpf.Host.Views;
+using NLog;
 using System;
 using System.Collections.ObjectModel;
 using System.Configuration;
@@ -14,6 +15,7 @@ namespace BlackList.Ui.Wpf.Host.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
+        private static ILogger _logger = LogManager.GetCurrentClassLogger();
         private static IStorage _storage;
 
         private Person _selectedPerson;
@@ -32,10 +34,20 @@ namespace BlackList.Ui.Wpf.Host.ViewModels
         public MainViewModel()
         {
             var dbConnectionString = ConfigurationManager.ConnectionStrings["BlackListDatabase"].ConnectionString;
+
+            _logger.Info($"Connection string [{dbConnectionString}]");
+
             _storage = new SqlStorage(dbConnectionString);
 
-            var persons = _storage.GetAllPersonsAsync().GetAwaiter().GetResult();
-            Persons = new ObservableCollection<Person>(persons);
+            try
+            {
+                var persons = _storage.GetAllPersonsAsync().GetAwaiter().GetResult();
+                Persons = new ObservableCollection<Person>(persons);
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex, "Cannot download persons from repository");
+            }            
         }
 
         public ICommand AddPersonCommand => new ActionCommand(ShowPersonInfoWindow);
