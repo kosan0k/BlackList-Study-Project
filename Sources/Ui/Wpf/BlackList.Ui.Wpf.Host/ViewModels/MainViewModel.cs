@@ -31,13 +31,9 @@ namespace BlackList.Ui.Wpf.Host.ViewModels
 
         public ObservableCollection<Person> Persons { get; set; }
 
-        public MainViewModel()
+        public MainViewModel(IStorage storage)
         {
-            var dbConnectionString = ConfigurationManager.ConnectionStrings["BlackListDatabase"].ConnectionString;
-
-            _logger.Info($"Connection string [{dbConnectionString}]");
-
-            _storage = new SqlStorage(dbConnectionString);
+            _storage = storage ?? throw new ArgumentNullException(nameof(storage));
 
             try
             {
