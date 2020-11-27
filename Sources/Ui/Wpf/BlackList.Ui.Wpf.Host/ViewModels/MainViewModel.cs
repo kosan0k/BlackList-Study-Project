@@ -41,7 +41,7 @@ namespace BlackList.Ui.Wpf.Host.ViewModels
 
             try
             {
-                var persons = _storage.GetAllPersonsAsync().GetAwaiter().GetResult();
+                var persons = _storage.GetAllPersonsAsync().Result;
                 Persons = new ObservableCollection<Person>(persons);
             }
             catch (Exception ex)
@@ -82,7 +82,7 @@ namespace BlackList.Ui.Wpf.Host.ViewModels
             ShowDialogWindow(userInfoView);
         }
 
-        internal virtual void ShowDialogWindow(Window window) 
+        internal virtual void ShowDialogWindow(Window window) //made virtual to avoid showing window in tests
         {
             window.Show();
         }
