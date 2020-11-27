@@ -20,6 +20,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlackList.Storage", "Storag
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackList.Storage.Sql", "Storage\BlackList.Storage.Sql\BlackList.Storage.Sql.csproj", "{0E0F7F4B-A0C1-41C1-AF3D-EA49992B621C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackList.Tests", "BlackList.Tests\BlackList.Tests.csproj", "{C9C472B9-C6A5-4D57-86B3-40B84D7A2D1A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +48,10 @@ Global
 		{0E0F7F4B-A0C1-41C1-AF3D-EA49992B621C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E0F7F4B-A0C1-41C1-AF3D-EA49992B621C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E0F7F4B-A0C1-41C1-AF3D-EA49992B621C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9C472B9-C6A5-4D57-86B3-40B84D7A2D1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9C472B9-C6A5-4D57-86B3-40B84D7A2D1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9C472B9-C6A5-4D57-86B3-40B84D7A2D1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9C472B9-C6A5-4D57-86B3-40B84D7A2D1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

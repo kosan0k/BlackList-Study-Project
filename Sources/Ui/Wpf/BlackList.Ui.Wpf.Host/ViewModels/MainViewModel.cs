@@ -9,6 +9,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace BlackList.Ui.Wpf.Host.ViewModels
@@ -31,17 +32,16 @@ namespace BlackList.Ui.Wpf.Host.ViewModels
 
         public ObservableCollection<Person> Persons { get; set; }
 
-        public MainViewModel()
+        internal PersonInfoViewModel PersonInfoViewModel { get; set; } //for test purposes only
+        internal ConfirmationViewModel ConfirmationViewModel { get; set; } //for test purposes only
+
+        public MainViewModel(IStorage storage)
         {
-            var dbConnectionString = ConfigurationManager.ConnectionStrings["BlackListDatabase"].ConnectionString;
-
-            _logger.Info($"Connection string [{dbConnectionString}]");
-
-            _storage = new SqlStorage(dbConnectionString);
+            _storage = storage ?? throw new ArgumentNullException(nameof(storage));
 
             try
             {
-                var persons = _storage.GetAllPersonsAsync().GetAwaiter().GetResult();
+                var persons = _storage.GetAllPersonsAsync().Result;
                 Persons = new ObservableCollection<Person>(persons);
             }
             catch (Exception ex)
@@ -59,7 +59,7 @@ namespace BlackList.Ui.Wpf.Host.ViewModels
             var personParameter = parameter as Person;
 
             Action<Person> confirmAction = null;
-            if (personParameter != null)
+            if (personParameter != null) // updating user
             {
                 confirmAction = (person) =>
                 {
@@ -68,16 +68,23 @@ namespace BlackList.Ui.Wpf.Host.ViewModels
                     OnPropertyChanged(nameof(Persons));
                 };
             }
-            else 
+            else // adding user
             {
                 confirmAction = (person) => Persons.Add(person);                
-            }                
+            }
+
+            PersonInfoViewModel = new PersonInfoViewModel(_storage, ref personParameter, confirmAction);
             var userInfoView = new PersonInfoView()
             {                
-                DataContext = new PersonInfoViewModel(_storage, ref personParameter, confirmAction)
+                DataContext = PersonInfoViewModel
             };
 
-            userInfoView.Show();
+            ShowDialogWindow(userInfoView);
+        }
+
+        internal virtual void ShowDialogWindow(Window window) //made virtual to avoid showing window in tests
+        {
+            window.Show();
         }
 
         private bool CanExecute(object parameter)
@@ -87,14 +94,14 @@ namespace BlackList.Ui.Wpf.Host.ViewModels
 
         private void ShowDeleteConfirmationView(object parameter) 
         {
+            ConfirmationViewModel = ConfirmationViewModel ?? new ConfirmationViewModel();
+            ConfirmationViewModel.ConfirmCommand = new AsyncCommand(DeleteSelectedPersonAsync);
+
             var confirmationView = new DeletionConfirmationView()
             {
-                DataContext = new ConfirmationViewModel()
-                {
-                    ConfirmCommand = new AsyncCommand(DeleteSelectedPersonAsync)
-                }
+                DataContext = ConfirmationViewModel
             };
-            confirmationView.Show();
+            ShowDialogWindow(confirmationView);
         }
 
         private async Task DeleteSelectedPersonAsync() 
